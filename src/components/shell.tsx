@@ -2,12 +2,15 @@ import React from "react"
 import { Card, Box } from "@material-ui/core"
 import { makeStyles, Theme } from "@material-ui/core/styles"
 
+import classNames from "classnames"
+
 import "typeface-roboto"
 import "./shell.css"
 
 interface Props {
   maxWidth?: string
   center?: boolean
+  cardClassName?: string
 }
 
 const Shell: React.FC<Props> = props => {
@@ -20,7 +23,9 @@ const Shell: React.FC<Props> = props => {
       flexDirection="column"
       alignItems="center"
     >
-      <Card className={classes.card}>{props.children}</Card>
+      <Card className={classNames(classes.card, props.cardClassName)}>
+        {props.children}
+      </Card>
     </Box>
   )
 }
@@ -31,7 +36,7 @@ const useStyles = makeStyles<Theme, Props>(theme => ({
     minHeight: "100vh",
     justifyContent: centered ? "center" : "flex-start",
 
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.only("xs")]: {
       justifyContent: "flex-start",
     },
   }),
@@ -40,7 +45,7 @@ const useStyles = makeStyles<Theme, Props>(theme => ({
     marginTop: centered ? 0 : theme.spacing(2),
     maxWidth: maxWidth,
 
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.only("xs")]: {
       width: "100%",
       minHeight: "100vh",
       marginTop: 0,
