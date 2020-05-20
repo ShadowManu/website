@@ -22,11 +22,10 @@ const Portrait = () => {
 
 const styles = {
   style: {
-    minHeight: "200px",
-    height: "calc(100vh - 200px)",
+    height: "60vh",
   },
   imgStyle: {
-    objectPosition: "50% 30%",
+    objectPosition: "50% 20%",
   },
 }
 

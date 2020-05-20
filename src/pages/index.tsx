@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 import Shell from "../components/shell"
 
 const IndexPage = () => (
-  <Shell>
+  <Shell center>
     <SEO title="Home" />
 
     <Portrait />
