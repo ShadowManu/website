@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Box, Typography as Text } from "@material-ui/core"
+import { Box, Divider, Typography as Text } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import Fade from "react-reveal/Fade"
 
@@ -22,12 +22,21 @@ const IndexPage = () => {
           <Text variant="h5" component="h1">
             Manuel Pacheco
           </Text>
-        </Fade>
-        <Fade bottom>
           <Text variant="subtitle1" component="p">
             Senior Software Engineer
           </Text>
         </Fade>
+        <Divider variant="middle" className={classes.divider}></Divider>
+        <Text variant="body1">
+          5 years of experience making products for the web.{" "}
+        </Text>
+        <Text variant="body1" className={classes.spaced}>
+          I enjoy having a pragmatic but engineered approach to problem-solving,
+          doing agile, and other popular buzzwords.
+        </Text>
+        <Text variant="body1" className={classes.spaced}>
+          Angular. React. Haskell. Biking. Video Games.
+        </Text>
       </Box>
     </Shell>
   )
@@ -48,15 +57,22 @@ const useStyles = makeStyles(theme => ({
     },
   },
   portrait: {
-    width: "200px",
-    height: "100%",
+    width: "300px",
     [theme.breakpoints.only("xs")]: {
       width: "100%",
       height: "60vh",
     },
   },
   content: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
+    width: "100%",
+    boxSizing: "border-box",
+  },
+  divider: {
+    margin: "10px 0",
+  },
+  spaced: {
+    marginTop: theme.spacing(1),
   },
 }))
 
