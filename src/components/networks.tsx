@@ -31,7 +31,7 @@ const Networks = ({ className }) => {
           placement="bottom"
           classes={{ tooltip: classes.tooltip }}
         >
-          <a href={url}>
+          <a href={url} target="_blank" rel="noreferrer noopener">
             <Icon className={classes.icon} />
           </a>
         </Tooltip>
