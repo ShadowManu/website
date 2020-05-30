@@ -5,6 +5,7 @@ import { makeStyles, Theme, ThemeProvider } from "@material-ui/core/styles"
 import classNames from "classnames"
 
 import { theme } from "../core/theme"
+import Background from "./background"
 
 import "typeface-roboto"
 import "./shell.css"
@@ -26,6 +27,7 @@ const Shell: React.FC<Props> = props => {
         flexDirection="column"
         alignItems="center"
       >
+        <Background />
         <Card className={classNames(classes.card, props.cardClassName)}>
           {props.children}
         </Card>
@@ -36,6 +38,7 @@ const Shell: React.FC<Props> = props => {
 
 const useStyles = makeStyles<Theme, Props>(theme => ({
   box: ({ center: centered }) => ({
+    position: "relative",
     width: "100%",
     minHeight: "100vh",
     justifyContent: centered ? "center" : "flex-start",
