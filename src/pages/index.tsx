@@ -7,6 +7,7 @@ import Fade from "react-reveal/Fade"
 import Portrait from "../components/portrait"
 import SEO from "../components/seo"
 import Shell from "../components/shell"
+import Networks from "../components/networks"
 
 const IndexPage = () => {
   const classes = useStyles()
@@ -37,6 +38,7 @@ const IndexPage = () => {
         <Text variant="body1" className={classes.spaced}>
           Angular. React. Haskell. Biking. Video Games.
         </Text>
+        <Networks className={classes.networks} />
       </Box>
     </Shell>
   )
@@ -69,10 +71,13 @@ const useStyles = makeStyles(theme => ({
     boxSizing: "border-box",
   },
   divider: {
-    margin: "10px 0",
+    margin: `${theme.spacing(2)}px 0`,
   },
   spaced: {
     marginTop: theme.spacing(1),
+  },
+  networks: {
+    marginTop: theme.spacing(2),
   },
 }))
 
