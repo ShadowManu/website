@@ -4,6 +4,11 @@ import { makeStyles, Theme } from "@material-ui/core/styles"
 
 import { useWindowSize } from "../core/use-window-size"
 
+interface Props {
+  rows: number
+  columns: number
+}
+
 const random = <T extends {}>(opts: T[]): T => {
   const index = Math.floor(Math.random() * opts.length)
   return opts[index]
@@ -36,9 +41,14 @@ const Background = () => {
   const rows = Math.ceil(size.height / 25)
   const columns = Math.ceil(size.width / 25)
 
-  const classes = useStyles({ rows, columns })
+  return <PureBackground rows={rows} columns={columns} />
+}
 
-  const elems = buildElems(rows * columns)
+// This is split so the elems building only happens
+// when the rows or columns change, as a perf optimization
+const PureBackground = React.memo((props: Props) => {
+  const classes = useStyles(props)
+  const elems = buildElems(props.rows * props.columns)
 
   return (
     <div className={classes.root}>
@@ -47,23 +57,21 @@ const Background = () => {
       ))}
     </div>
   )
-}
+})
 
-const useStyles = makeStyles<Theme, { rows: number; columns: number }>(
-  theme => ({
-    root: {
-      position: "absolute",
-      zIndex: -1,
-      width: "100%",
-      height: "100%",
-      background: theme.palette.background.default,
+const useStyles = makeStyles<Theme, Props>(theme => ({
+  root: {
+    position: "absolute",
+    zIndex: -1,
+    width: "100%",
+    height: "100%",
+    background: theme.palette.background.default,
 
-      display: "grid",
-      gridTemplateColumns: props => `repeat(${props.columns}, 1fr)`,
-      gridTemplateRows: props => `repeat(${props.rows}, 1fr)`,
-    },
-    item: {},
-  })
-)
+    display: "grid",
+    gridTemplateColumns: props => `repeat(${props.columns}, 1fr)`,
+    gridTemplateRows: props => `repeat(${props.rows}, 1fr)`,
+  },
+  item: {},
+}))
 
 export default Background
