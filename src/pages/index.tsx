@@ -60,9 +60,14 @@ const useStyles = makeStyles(theme => ({
   },
   portrait: {
     width: "300px",
+    filter: "grayscale(100%)",
+    transition: "filter 300ms ease",
     [theme.breakpoints.only("xs")]: {
       width: "100%",
       height: "60vh",
+    },
+    "&:hover": {
+      filter: "none",
     },
   },
   content: {
