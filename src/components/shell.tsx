@@ -1,8 +1,10 @@
 import React from "react"
 import { Card, Box } from "@material-ui/core"
-import { makeStyles, Theme } from "@material-ui/core/styles"
+import { makeStyles, Theme, ThemeProvider } from "@material-ui/core/styles"
 
 import classNames from "classnames"
+
+import { theme } from "../core/theme"
 
 import "typeface-roboto"
 import "./shell.css"
@@ -17,16 +19,18 @@ const Shell: React.FC<Props> = props => {
   const classes = useStyles(props)
 
   return (
-    <Box
-      className={classes.box}
-      display="flex"
-      flexDirection="column"
-      alignItems="center"
-    >
-      <Card className={classNames(classes.card, props.cardClassName)}>
-        {props.children}
-      </Card>
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box
+        className={classes.box}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+      >
+        <Card className={classNames(classes.card, props.cardClassName)}>
+          {props.children}
+        </Card>
+      </Box>
+    </ThemeProvider>
   )
 }
 
