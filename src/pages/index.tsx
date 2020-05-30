@@ -79,10 +79,10 @@ const useStyles = makeStyles(theme => ({
     margin: `${theme.spacing(2)}px 0`,
   },
   spaced: {
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(2),
   },
   networks: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(3),
   },
 }))
 
