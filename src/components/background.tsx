@@ -17,7 +17,7 @@ const random = <T extends {}>(opts: T[]): T => {
 const buildElems = (n: number) =>
   Array(n)
     .fill(0)
-    .map((_, i) => {
+    .map(() => {
       const option = random([1, 2, 4, 8, 7, 11, 13, 14])
 
       const borderRadius = Array(4)
