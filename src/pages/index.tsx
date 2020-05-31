@@ -14,7 +14,7 @@ const IndexPage = () => {
 
   return (
     <Shell cardClassName={classes.shellCard} center>
-      <SEO title="Home" />
+      <SEO />
 
       <Portrait className={classes.portrait} />
 
