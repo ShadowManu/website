@@ -3,7 +3,7 @@ import React from "react"
 import { Box, Divider, Typography as Text } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 
-import Appear from "../components/appear"
+import AppearGroup from "../components/appear-group"
 import Networks from "../components/networks"
 import Portrait from "../components/portrait"
 import SEO from "../components/seo"
@@ -19,30 +19,28 @@ const IndexPage = () => {
       <Portrait className={classes.portrait} />
 
       <Box className={classes.content}>
-        <Appear>
+        <AppearGroup>
           <Text variant="h5" component="h1">
             Manuel Pacheco
           </Text>
-        </Appear>
-        <Appear>
           <Text variant="subtitle1" component="p">
             Senior Software Engineer
           </Text>
-        </Appear>
 
-        <Divider variant="middle" className={classes.divider}></Divider>
+          <Divider variant="middle" className={classes.divider}></Divider>
 
-        <Text variant="body1">
-          5 years of experience making products for the web.
-        </Text>
-        <Text variant="body1" className={classes.spaced}>
-          I enjoy having a pragmatic but engineered approach to problem-solving,
-          doing agile, and other popular buzzwords.
-        </Text>
-        <Text variant="body1" className={classes.spaced}>
-          Angular. React. Haskell. Biking. Video Games.
-        </Text>
-        <Networks className={classes.networks} />
+          <Text variant="body1">
+            5 years of experience making products for the web.
+          </Text>
+          <Text variant="body1" className={classes.spaced}>
+            I enjoy having a pragmatic but engineered approach to
+            problem-solving, doing agile, and other popular buzzwords.
+          </Text>
+          <Text variant="body1" className={classes.spaced}>
+            Angular. React. Haskell. Biking. Video Games.
+          </Text>
+          <Networks className={classes.networks} />
+        </AppearGroup>
       </Box>
     </Shell>
   )

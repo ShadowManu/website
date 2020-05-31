@@ -19,11 +19,11 @@ const items = [
   { name: "Email", url: "mailto:me@shadowmanu.com", icon: Email },
 ]
 
-const Networks = ({ className }) => {
+const Networks = ({ style, className }) => {
   const classes = useStyles()
 
   return (
-    <div className={classnames(classes.root, className)}>
+    <div style={style} className={classnames(classes.root, className)}>
       {items.map(({ name, url, icon: Icon }, i) => (
         <Tooltip
           key={name}

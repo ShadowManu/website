@@ -11,7 +11,8 @@ interface Props {
 
 const Appear: React.FC<Props> = props => {
   const classes = useStyles(props)
-  const [inProp, setInProp] = useState(false)
+  const isServer = typeof window !== "object"
+  const [inProp, setInProp] = useState(isServer)
 
   useEffect(() => {
     const id = setTimeout(() => setInProp(true), props.delay)
@@ -25,7 +26,9 @@ const Appear: React.FC<Props> = props => {
       timeout={props.duration + 1000}
       classNames={classes}
     >
-      {props.children}
+      {inProp
+        ? props.children
+        : React.cloneElement(props.children, { style: { opacity: 0 } })}
     </CSSTransition>
   )
 }
