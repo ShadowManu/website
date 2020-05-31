@@ -11,12 +11,23 @@ interface Props {
 
 const Appear: React.FC<Props> = props => {
   const classes = useStyles(props)
-  const isServer = typeof window !== "object"
-  const [inProp, setInProp] = useState(isServer)
+  const [inProp, setInProp] = useState(true)
+  const [style, setStyle] = useState<any>()
 
   useEffect(() => {
-    const id = setTimeout(() => setInProp(true), props.delay)
-    return () => clearTimeout(id)
+    const isClient = typeof window === "object"
+
+    if (isClient) {
+      setInProp(false)
+      setStyle({ opacity: 0 })
+
+      const id = setTimeout(() => {
+        setInProp(true)
+        setStyle(undefined)
+      }, props.delay)
+
+      return () => clearTimeout(id)
+    }
   }, [])
 
   return (
@@ -26,9 +37,7 @@ const Appear: React.FC<Props> = props => {
       timeout={props.duration + 1000}
       classNames={classes}
     >
-      {inProp
-        ? props.children
-        : React.cloneElement(props.children, { style: { opacity: 0 } })}
+      {React.cloneElement(props.children, { style })}
     </CSSTransition>
   )
 }
