@@ -2,12 +2,12 @@ import React from "react"
 
 import { Box, Divider, Typography as Text } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
-import Fade from "react-reveal/Fade"
 
+import Appear from "../components/appear"
+import Networks from "../components/networks"
 import Portrait from "../components/portrait"
 import SEO from "../components/seo"
 import Shell from "../components/shell"
-import Networks from "../components/networks"
 
 const IndexPage = () => {
   const classes = useStyles()
@@ -19,17 +19,21 @@ const IndexPage = () => {
       <Portrait className={classes.portrait} />
 
       <Box className={classes.content}>
-        <Fade bottom>
+        <Appear>
           <Text variant="h5" component="h1">
             Manuel Pacheco
           </Text>
+        </Appear>
+        <Appear>
           <Text variant="subtitle1" component="p">
             Senior Software Engineer
           </Text>
-        </Fade>
+        </Appear>
+
         <Divider variant="middle" className={classes.divider}></Divider>
+
         <Text variant="body1">
-          5 years of experience making products for the web.{" "}
+          5 years of experience making products for the web.
         </Text>
         <Text variant="body1" className={classes.spaced}>
           I enjoy having a pragmatic but engineered approach to problem-solving,
