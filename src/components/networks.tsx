@@ -10,6 +10,11 @@ import Email from "@material-ui/icons/Email"
 import { makeStyles } from "@material-ui/core/styles"
 import classnames from "classnames"
 
+interface Props {
+  style?: React.CSSProperties
+  className: string
+}
+
 // prettier-ignore
 const items = [
   { name: "GitHub", url: "https://github.com/ShadowManu", icon: GitHub },
@@ -19,7 +24,7 @@ const items = [
   { name: "Email", url: "mailto:me@shadowmanu.com", icon: Email },
 ]
 
-const Networks = ({ style, className }) => {
+const Networks: React.FC<Props> = ({ style, className }) => {
   const classes = useStyles()
 
   return (
