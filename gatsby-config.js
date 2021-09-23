@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Manuel Pacheco`,
-    description: `Senior Software Engineer. 5 years of experience making products for the web. Angular. React. Haskell. Biking. Video Games.`,
+    description: `Senior Software Engineer. 5 years of experience making products for the web. Typescript. React. Node. Angular. Haskell. Biking. Video Games.`,
     author: `@ShadowManu`,
   },
   plugins: [

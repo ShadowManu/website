@@ -87,7 +87,9 @@ const IndexPage = () => {
           I enjoy having a pragmatic but engineered approach to problem-solving,
           doing agile, and other popular buzzwords.
         </Phrase>
-        <Phrase>Angular. React. Haskell. Biking. Video Games.</Phrase>
+        <Phrase>
+          Typescript. React. Node. Angular. Haskell. Biking. Video Games.
+        </Phrase>
 
         <StyledNetworks />
       </StyledBox>
