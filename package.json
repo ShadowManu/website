@@ -5,7 +5,9 @@
   "description": "Manuel Pacheco's personal website",
   "author": "Manuel Pacheco <me@shadowmanu.com>",
   "license": "MIT",
-  "keywords": ["gatsby"],
+  "keywords": [
+    "gatsby"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/ShadowManu/website"
@@ -24,14 +26,17 @@
     "@material-ui/icons": "^4.11.2",
     "@types/classnames": "^2.3.0",
     "@types/react-helmet": "^6.1.2",
+    "@types/styled-components": "^5.1.14",
     "classnames": "^2.3.1",
     "gatsby": "^3.14.0",
     "gatsby-image": "^3.11.0",
+    "gatsby-plugin-image": "^1.14.0",
     "gatsby-plugin-manifest": "^3.14.0",
     "gatsby-plugin-material-ui": "^3.0.1",
     "gatsby-plugin-offline": "^4.14.0",
     "gatsby-plugin-react-helmet": "^4.14.0",
     "gatsby-plugin-sharp": "^3.14.0",
+    "gatsby-plugin-styled-components": "^4.14.0",
     "gatsby-source-filesystem": "^3.14.0",
     "gatsby-transformer-sharp": "^3.14.0",
     "prettier": "2.4.1",
@@ -39,6 +44,8 @@
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-transition-group": "^4.4.2",
+    "styled-components": "^5.3.1",
+    "styled-media-query": "^2.1.2",
     "typeface-roboto": "1.1.13"
   }
 }
