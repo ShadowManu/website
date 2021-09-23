@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es6",
-    "jsx": "preserve",
-    "lib": ["dom", "es2015", "es2017"],
+    "target": "esnext",
+    "lib": ["dom", "es2017"],
+    "jsx": "react",
+    "noEmit": true,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
