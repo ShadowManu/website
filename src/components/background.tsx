@@ -1,73 +1,55 @@
-import React from "react"
+import React, { useMemo } from "react";
 
-import { makeStyles, Theme } from "@material-ui/core/styles"
-
-import { useWindowSize } from "../core/use-window-size"
+// import { useWindowSize } from "../core/use-window-size";
+import styled from "styled-components";
 
 interface Props {
-  rows: number
-  columns: number
+  rows: number;
+  columns: number;
 }
 
 const random = <T extends {}>(opts: T[]): T => {
-  const index = Math.floor(Math.random() * opts.length)
-  return opts[index]
-}
+  const index = Math.floor(Math.random() * opts.length);
+  return opts[index];
+};
 
 const buildElems = (n: number) =>
   Array(n)
     .fill(0)
-    .map(() => {
+    .map((_, key) => {
       // This defines in binary format which of the 4 corners are rounded
-      const figure = random([1, 2, 4, 8, 7, 11, 13, 14])
+      const figure = random([1, 2, 4, 8, 7, 11, 13, 14]);
 
       const borderRadius = Array(4)
         .fill(0)
         .map((_, j) => ((figure >> j) & 1 ? "100%" : "0"))
-        .join(" ")
+        .join(" ");
 
-      const background = random(["#121212", "#f44336"])
-      const opacity = random(["10%", "30%", "60%"])
+      const background = random(["#121212", "#f44336"]);
+      const opacity = random(["10%", "30%", "60%"]);
 
-      return { style: { borderRadius, background, opacity } }
-    })
+      return { style: { borderRadius, background, opacity }, key };
+    });
+
+const Root = styled.div`
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+
+  background: ${({ theme }) => theme.palette.background.default};
+`;
+/* display: grid; */
+/* grid-template-columns: ${({ columns }) => `repeat(${columns}, 1fr)`}; */
+/* grid-template-rows: ${({ rows }) => `repeat(${rows}, 1fr)`}; */
 
 const Background = () => {
-  const size = useWindowSize()
-  const rows = Math.ceil(size.height / 25)
-  const columns = Math.ceil(size.width / 25)
+  // const size = useWindowSize() ?? { width: 1366, height: 784 };
+  // const rows = Math.ceil(size.height / 25);
+  // const columns = Math.ceil(size.width / 25);
+  // const elems = useMemo(() => buildElems(rows * columns), [rows, columns]);
 
-  return <PureBackground rows={rows} columns={columns} />
-}
+  return <Root></Root>;
+};
 
-// This is split so the elems building only happens
-// when the rows or columns change, as a perf optimization
-const PureBackground = React.memo((props: Props) => {
-  const classes = useStyles(props)
-  const elems = buildElems(props.rows * props.columns)
-
-  return (
-    <div className={classes.root}>
-      {elems.map((elem, i) => (
-        <div key={i} style={elem.style}></div>
-      ))}
-    </div>
-  )
-})
-
-const useStyles = makeStyles<Theme, Props>(theme => ({
-  root: {
-    position: "absolute",
-    zIndex: -1,
-    width: "100%",
-    height: "100%",
-    background: theme.palette.background.default,
-
-    display: "grid",
-    gridTemplateColumns: props => `repeat(${props.columns}, 1fr)`,
-    gridTemplateRows: props => `repeat(${props.rows}, 1fr)`,
-  },
-  item: {},
-}))
-
-export default Background
+export default Background;

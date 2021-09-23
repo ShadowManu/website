@@ -1,25 +1,22 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from "react";
 
-const Portrait = ({ className }) => {
-  const data = useStaticQuery(graphql`
-    query Portrait {
-      image: file(relativePath: { eq: "portrait.jpg" }) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
+import { StaticImage } from "gatsby-plugin-image";
 
-  const fluid = data.image.childImageSharp.fluid
-
-  return <Img fluid={fluid} className={className} imgStyle={imgStyle} />
+interface Props {
+  className?: string;
 }
 
-const imgStyle = { objectPosition: "50% 20%" }
+const Portrait: React.FC<Props> = ({ className }) => {
+  return (
+    <StaticImage
+      className={className}
+      src="../images/portrait.jpg"
+      alt="portrait"
+      imgStyle={imgStyle}
+    />
+  );
+};
 
-export default Portrait
+const imgStyle = { objectPosition: "50% 20%" };
+
+export default Portrait;
