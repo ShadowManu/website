@@ -1,6 +1,8 @@
 import React from "react";
 
-import { Box, Divider, Typography } from "@material-ui/core";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
 import styled from "styled-components";
 import media from "styled-media-query";
 
@@ -47,23 +49,23 @@ const StyledPortrait = styled(Portrait)`
 `;
 
 const StyledBox = styled(Box)`
-  padding: ${({ theme }) => theme.spacing(3)}px;
+  padding: ${({ theme }) => theme.spacing(3)};
   flex: 7;
   box-sizing: border-box;
 `;
 
 const StyledDivider = styled(Divider).attrs(() => ({ variant: "middle" }))`
-  margin: ${({ theme }) => theme.spacing(2)}px 0 !important;
+  margin: ${({ theme }) => theme.spacing(2)} 0 !important;
 `;
 
 const Phrase = styled(Typography).attrs(() => ({ variant: "body1" }))`
   & + & {
-    margin-top: ${({ theme }) => theme.spacing(2)}px;
+    margin-top: ${({ theme }) => theme.spacing(2)};
   }
 `;
 
 const StyledNetworks = styled(Networks)`
-  margin-top: ${({ theme }) => theme.spacing(3)}px;
+  margin-top: ${({ theme }) => theme.spacing(3)};
 `;
 
 const IndexPage = () => {

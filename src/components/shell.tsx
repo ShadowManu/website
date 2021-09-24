@@ -1,7 +1,11 @@
 import React from "react";
 
-import { Box, Card } from "@material-ui/core";
-import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import {
+  ThemeProvider as MuiThemeProvider,
+  StyledEngineProvider,
+} from "@mui/material/styles";
 import styled, { ThemeProvider as SCThemeProvider } from "styled-components";
 import media from "styled-media-query";
 
@@ -37,7 +41,7 @@ const Wrapper = styled(Box)<TProps>`
 
 export const PageCard = styled(Card)<TProps>`
   margin: 0 auto;
-  margin-top: ${({ $centered, theme }) => ($centered ? 0 : theme.spacing(2))}px;
+  margin-top: ${({ $centered, theme }) => ($centered ? 0 : theme.spacing(2))};
 
   ${media.lessThan("small")`
     width: 100%;

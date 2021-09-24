@@ -1,13 +1,13 @@
 import React from "react";
 
-import Tooltip, { TooltipProps } from "@material-ui/core/Tooltip";
+import Tooltip, { TooltipProps } from "@mui/material/Tooltip";
 import styled from "styled-components";
 
-import GitHub from "@material-ui/icons/GitHub";
-import Twitter from "@material-ui/icons/Twitter";
-import Book from "@material-ui/icons/Book";
-import LinkedIn from "@material-ui/icons/LinkedIn";
-import Email from "@material-ui/icons/Email";
+import GitHub from "@mui/icons-material/GitHub";
+import Twitter from "@mui/icons-material/Twitter";
+import Book from "@mui/icons-material/Book";
+import LinkedIn from "@mui/icons-material/LinkedIn";
+import Email from "@mui/icons-material/Email";
 
 // prettier-ignore
 const items = [
@@ -20,7 +20,7 @@ const items = [
 
 const Root = styled.div`
   max-width: 244px;
-  padding-bottom: ${({ theme }) => theme.spacing(1)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(1)};
 
   display: flex;
   flex-direction: row;
