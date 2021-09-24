@@ -1,4 +1,5 @@
-import styled, { keyframes } from "styled-components";
+import { keyframes } from "@emotion/react";
+import styled from "@emotion/styled";
 
 const gradient = keyframes`
   0% { background-position: 0% 50%; }

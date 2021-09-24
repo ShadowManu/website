@@ -1,7 +1,8 @@
 import React from "react";
 
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 import { Transition } from "react-transition-group";
-import styled, { css } from "styled-components";
 
 import DelayBuilder from "./delay-builder";
 

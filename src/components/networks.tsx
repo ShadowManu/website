@@ -1,7 +1,7 @@
 import React from "react";
 
+import styled from "@emotion/styled";
 import Tooltip, { TooltipProps } from "@mui/material/Tooltip";
-import styled from "styled-components";
 
 import GitHub from "@mui/icons-material/GitHub";
 import Twitter from "@mui/icons-material/Twitter";

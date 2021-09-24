@@ -1,9 +1,9 @@
 import React from "react";
 
+import styled from "@emotion/styled";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
-import styled from "styled-components";
 import media from "styled-media-query";
 
 import AppearGroup from "../components/appear-group";
@@ -54,15 +54,15 @@ const StyledBox = styled(Box)`
   box-sizing: border-box;
 `;
 
-const StyledDivider = styled(Divider).attrs(() => ({ variant: "middle" }))`
+const Separator = styled(Divider)`
   margin: ${({ theme }) => theme.spacing(2)} 0 !important;
 `;
+Separator.defaultProps = { variant: "middle" };
 
-const Phrase = styled(Typography).attrs(() => ({ variant: "body1" }))`
-  & + & {
-    margin-top: ${({ theme }) => theme.spacing(2)};
-  }
+const Phrase = styled(Typography)`
+  margin-top: ${({ theme }) => theme.spacing(2)};
 `;
+Phrase.defaultProps = { variant: "body1" };
 
 const StyledNetworks = styled(Networks)`
   margin-top: ${({ theme }) => theme.spacing(3)};
@@ -84,7 +84,7 @@ const IndexPage = () => {
             Senior Software Engineer
           </Typography>
 
-          <StyledDivider />
+          <Separator />
 
           <Phrase>5 years of experience making products for the web.</Phrase>
           <Phrase>
