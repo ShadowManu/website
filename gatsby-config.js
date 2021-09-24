@@ -5,16 +5,16 @@ module.exports = {
     author: `@ShadowManu`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-image`,
+    `gatsby-plugin-material-ui`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`, // Needed for dynamic images
     {
       resolve: `gatsby-source-filesystem`,
       options: { name: `images`, path: `${__dirname}/src/images` },
     },
-    `gatsby-plugin-material-ui`,
-    `gatsby-plugin-styled-components`,
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {
