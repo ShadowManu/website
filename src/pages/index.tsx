@@ -4,6 +4,7 @@ import { Box, Divider, Typography } from "@material-ui/core";
 import styled from "styled-components";
 import media from "styled-media-query";
 
+import AppearGroup from "../components/appear-group";
 import Networks from "../components/networks";
 import Portrait from "../components/portrait";
 import SEO from "../components/seo";
@@ -73,25 +74,26 @@ const IndexPage = () => {
       <StyledPortrait />
 
       <StyledBox>
-        <Typography variant="h5" component="h1">
-          Manuel Pacheco
-        </Typography>
-        <Typography variant="subtitle1" component="p">
-          Senior Software Engineer
-        </Typography>
+        <AppearGroup>
+          <Typography variant="h5" component="h1">
+            Manuel Pacheco
+          </Typography>
+          <Typography variant="subtitle1" component="p">
+            Senior Software Engineer
+          </Typography>
 
-        <StyledDivider />
+          <StyledDivider />
 
-        <Phrase>5 years of experience making products for the web.</Phrase>
-        <Phrase>
-          I enjoy having a pragmatic but engineered approach to problem-solving,
-          doing agile, and other popular buzzwords.
-        </Phrase>
-        <Phrase>
-          Typescript. React. Node. Angular. Haskell. Biking. Video Games.
-        </Phrase>
-
-        <StyledNetworks />
+          <Phrase>5 years of experience making products for the web.</Phrase>
+          <Phrase>
+            I enjoy having a pragmatic but engineered approach to
+            problem-solving, doing agile, and other popular buzzwords.
+          </Phrase>
+          <Phrase>
+            Typescript. React. Node. Angular. Haskell. Biking. Video Games.
+          </Phrase>
+          <StyledNetworks />
+        </AppearGroup>
       </StyledBox>
     </StyledShell>
   );
