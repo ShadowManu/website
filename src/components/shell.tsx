@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import { ThemeProvider as MuiTheme } from "@mui/material/styles";
 import { ThemeProvider as EmotionTheme } from "@emotion/react";
+import isPropValid from "@emotion/is-prop-valid";
 import styled from "@emotion/styled";
 import media from "styled-media-query";
 
@@ -19,10 +20,10 @@ interface Props {
 }
 
 interface TProps {
-  $centered?: boolean;
+  centered?: boolean;
 }
 
-const Wrapper = styled(Box)<TProps>`
+const Wrapper = styled(Box, { shouldForwardProp: isPropValid })<TProps>`
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -30,16 +31,18 @@ const Wrapper = styled(Box)<TProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: ${({ $centered }) => ($centered ? "center" : "flex-start")};
+  justify-content: ${({ centered }) => (centered ? "center" : "flex-start")};
 
   ${media.lessThan("small")`
     justify-content: flex-start;
   `}
 `;
 
-export const PageCard = styled(Card)<TProps>`
+export const PageCard = styled(Card, {
+  shouldForwardProp: isPropValid,
+})<TProps>`
   margin: 0 auto;
-  margin-top: ${({ $centered, theme }) => ($centered ? 0 : theme.spacing(2))};
+  margin-top: ${({ centered, theme }) => (centered ? 0 : theme.spacing(2))};
 
   ${media.lessThan("small")`
     width: 100%;
@@ -52,9 +55,9 @@ const Shell: React.FC<Props> = ({ centered = false, className, children }) => {
   return (
     <MuiTheme theme={theme}>
       <EmotionTheme theme={theme}>
-        <Wrapper className={className} $centered={centered}>
+        <Wrapper className={className} centered={centered}>
           <Background />
-          <PageCard $centered={centered}>{children}</PageCard>
+          <PageCard centered={centered}>{children}</PageCard>
         </Wrapper>
       </EmotionTheme>
     </MuiTheme>
