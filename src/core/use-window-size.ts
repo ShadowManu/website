@@ -1,30 +1,28 @@
-import { useState, useEffect } from "react"
+import { useState, useCallback } from "react";
+import { useWindowEffect } from "./use-window-effect";
 
-// See more at https://usehooks.com/useWindowSize/
-export const useWindowSize = () => {
-  const isClient = typeof window === "object"
-
-  const getSize = () => {
-    return {
-      width: isClient ? window.innerWidth : 0,
-      height: isClient ? window.innerHeight : 0,
-    }
-  }
-
-  const [windowSize, setWindowSize] = useState(getSize)
-
-  useEffect(() => {
-    if (!isClient) {
-      return
-    }
-
-    const handleResize = () => {
-      setWindowSize(getSize())
-    }
-
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize)
-  }, []) // Empty array ensures that effect is only run on mount and unmount
-
-  return windowSize
+export interface Size {
+  width: number;
+  height: number;
 }
+
+const getSize = () => ({
+  width: window.innerWidth,
+  height: window.innerHeight,
+});
+
+export const useWindowSize = () => {
+  const [size, setSize] = useState<Size | undefined>(undefined);
+
+  const effect = useCallback(() => {
+    const update = () => setSize(getSize());
+
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  useWindowEffect(effect);
+
+  return size;
+};

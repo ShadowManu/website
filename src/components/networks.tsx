@@ -1,19 +1,13 @@
-import React from "react"
-import Tooltip from "@material-ui/core/Tooltip"
+import React from "react";
 
-import GitHub from "@material-ui/icons/GitHub"
-import Twitter from "@material-ui/icons/Twitter"
-import Book from "@material-ui/icons/Book"
-import LinkedIn from "@material-ui/icons/LinkedIn"
-import Email from "@material-ui/icons/Email"
+import styled from "@emotion/styled";
+import Tooltip, { TooltipProps } from "@mui/material/Tooltip";
 
-import { makeStyles } from "@material-ui/core/styles"
-import classnames from "classnames"
-
-interface Props {
-  style?: React.CSSProperties
-  className: string
-}
+import GitHub from "@mui/icons-material/GitHub";
+import Twitter from "@mui/icons-material/Twitter";
+import Book from "@mui/icons-material/Book";
+import LinkedIn from "@mui/icons-material/LinkedIn";
+import Email from "@mui/icons-material/Email";
 
 // prettier-ignore
 const items = [
@@ -24,47 +18,57 @@ const items = [
   { name: "Email", url: "mailto:me@shadowmanu.com", icon: Email },
 ]
 
-const Networks: React.FC<Props> = ({ style, className }) => {
-  const classes = useStyles()
+const Root = styled.div`
+  max-width: 244px;
+  padding-bottom: ${({ theme }) => theme.spacing(1)};
 
-  return (
-    <div style={style} className={classnames(classes.root, className)}>
-      {items.map(({ name, url, icon: Icon }, i) => (
-        <Tooltip
-          key={name}
-          title={name}
-          placement="bottom"
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <a href={url} target="_blank" rel="noreferrer noopener">
-            <Icon className={classes.icon} />
-          </a>
-        </Tooltip>
-      ))}
-    </div>
-  )
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const TooltipAdapter: React.FC<TooltipProps & { className?: string }> = ({
+  className,
+  ...props
+}) => {
+  const tooltip = `${className}__tooltip`;
+
+  return <Tooltip classes={{ tooltip }} {...props} />;
+};
+
+const StyledTooltip = styled(TooltipAdapter)`
+  &__tooltip {
+    margin: 0 !important;
+  }
+`;
+
+const StyledIcon = styled.svg`
+  &&& {
+    width: 36px;
+    height: 36px;
+    color: ${({ theme }) => theme.palette.primary.main};
+    flex-shrink: 0;
+  }
+`;
+
+interface Props {
+  className?: string;
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    maxWidth: "244px",
-    paddingBottom: theme.spacing(1),
+const Networks: React.FC<Props> = ({ className }) => {
+  return (
+    <Root className={className}>
+      {items.map(({ name, url, icon: Icon }) => (
+        <StyledTooltip key={name} title={name} placement="bottom">
+          <a href={url} target="_blank" rel="noreferrer noopener">
+            <StyledIcon as={Icon} />
+          </a>
+        </StyledTooltip>
+      ))}
+    </Root>
+  );
+};
 
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexWrap: "wrap",
-  },
-  tooltip: {
-    margin: 0,
-  },
-  icon: {
-    width: "36px",
-    height: "36px",
-    color: theme.palette.primary.main,
-    flexShrink: 0,
-  },
-}))
-
-export default Networks
+export default Networks;

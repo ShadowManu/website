@@ -1,68 +1,67 @@
-import React from "react"
-import { Card, Box } from "@material-ui/core"
-import { makeStyles, Theme, ThemeProvider } from "@material-ui/core/styles"
+import React from "react";
 
-import classNames from "classnames"
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import { ThemeProvider as MuiTheme } from "@mui/material/styles";
+import { ThemeProvider as EmotionTheme } from "@emotion/react";
+import isPropValid from "@emotion/is-prop-valid";
+import styled from "@emotion/styled";
+import media from "styled-media-query";
 
-import { theme } from "../core/theme"
-import Background from "./background"
+import { theme } from "../core/theme";
+import Background from "./background";
 
-import "typeface-roboto"
-import "./shell.css"
+import "typeface-roboto";
+import "./shell.css";
 
 interface Props {
-  maxWidth?: string
-  center?: boolean
-  cardClassName?: string
+  centered?: boolean;
+  className?: string;
 }
 
-const Shell: React.FC<Props> = props => {
-  const classes = useStyles(props)
+interface TProps {
+  centered?: boolean;
+}
 
+const Wrapper = styled(Box, { shouldForwardProp: isPropValid })<TProps>`
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: ${({ centered }) => (centered ? "center" : "flex-start")};
+
+  ${media.lessThan("small")`
+    justify-content: flex-start;
+  `}
+`;
+
+export const PageCard = styled(Card, {
+  shouldForwardProp: isPropValid,
+})<TProps>`
+  margin: 0 auto;
+  margin-top: ${({ centered, theme }) => (centered ? 0 : theme.spacing(2))};
+
+  ${media.lessThan("small")`
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 0;
+  `}
+`;
+
+const Shell: React.FC<Props> = ({ centered = false, className, children }) => {
   return (
-    <ThemeProvider theme={theme}>
-      <Box
-        className={classes.box}
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-      >
-        <Background />
-        <Card className={classNames(classes.card, props.cardClassName)}>
-          {props.children}
-        </Card>
-      </Box>
-    </ThemeProvider>
-  )
-}
+    <MuiTheme theme={theme}>
+      <EmotionTheme theme={theme}>
+        <Wrapper className={className} centered={centered}>
+          <Background />
+          <PageCard centered={centered}>{children}</PageCard>
+        </Wrapper>
+      </EmotionTheme>
+    </MuiTheme>
+  );
+};
 
-const useStyles = makeStyles<Theme, Props>(theme => ({
-  box: ({ center: centered }) => ({
-    position: "relative",
-    width: "100%",
-    minHeight: "100vh",
-    justifyContent: centered ? "center" : "flex-start",
-
-    [theme.breakpoints.only("xs")]: {
-      justifyContent: "flex-start",
-    },
-  }),
-  card: ({ maxWidth, center: centered }) => ({
-    margin: "0 auto",
-    marginTop: centered ? 0 : theme.spacing(2),
-    maxWidth: maxWidth,
-
-    [theme.breakpoints.only("xs")]: {
-      width: "100%",
-      minHeight: "100vh",
-      marginTop: 0,
-    },
-  }),
-}))
-
-Shell.defaultProps = {
-  maxWidth: "750px",
-  center: false,
-}
-
-export default Shell
+export default Shell;
