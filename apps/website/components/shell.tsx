@@ -33,6 +33,8 @@ export const PageCard = styled(Card, VALID_FORWARD)<{ centered?: boolean }>`
     max-width: 100%;
     min-height: 100vh;
     margin-top: 0;
+
+    border-radius: 0;
   }
 `;
 
