@@ -12,7 +12,7 @@ const SEO: React.FC<Props> = ({ subtitle, type }) => {
     }Manuel Pacheco | Software Engineer`,
     author: 'Manuel Pacheco',
     description:
-      'Senior Software Engineer. 6 years of experience making products for the web. Typescript. React. Node. Azure. Angular. Haskell. Biking. Video Games.',
+      'Senior Software Engineer. 6 years of experience making software for the web. Typescript. React. Node. Azure. Angular. Haskell. Biking. Video Games.',
     type: type ?? 'website',
     url: 'https://manuelpacheco.dev',
     image: 'https://manuelpacheco.dev/portrait.jpg',

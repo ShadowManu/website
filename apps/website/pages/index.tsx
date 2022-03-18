@@ -35,10 +35,6 @@ const Phrase = styled((props: any) => (
   margin-top: ${({ theme }) => theme.spacing(2)};
 `;
 
-// const StyledNetworks = styled(Networks)`
-//   margin-top: ${({ theme }) => theme.spacing(3)};
-// `;
-
 const Index = () => {
   return (
     <Shell centered>
@@ -61,11 +57,14 @@ const Index = () => {
               <Separator />
 
               <Phrase>
-                6 years of experience making products for the web.
+                6 years of experience making software for the web.
               </Phrase>
               <Phrase>
-                I enjoy having a pragmatic but engineered approach to
-                problem-solving, doing agile, and other popular buzzwords.
+                I enjoy building software in a pragmatic, engineered way, using
+                state-of-the-art technologies to do as little as possible for
+                the best automation available, managing technical debt
+                responsibly, even in the oldest of environments. Doing agile,
+                digital transformations and any other trendy buzzwords.
               </Phrase>
               <Phrase>
                 Typescript. React. Node. Azure. Angular. Haskell. Biking. Video
