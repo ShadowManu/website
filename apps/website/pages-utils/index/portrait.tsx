@@ -1,20 +1,17 @@
-import Image from 'next/image';
-
 import styled from '@emotion/styled';
 
 import portrait from '../../public/portrait.jpg';
 
-const PortraitImage = styled(({ className }: { className?: string }) => (
-  <Image className={className} layout="fill" src={portrait} alt="Portrait" />
-))`
-  object-fit: cover;
-  object-position: 49% 27%;
-`;
+const BasePortrait: React.FC<{ className?: string }> = ({ className }) => (
+  <img className={className} src={portrait.src} alt="Portrait" />
+);
 
-const Wrapper = styled.div`
-  position: relative;
+const Portrait = styled(BasePortrait)`
   width: 100%;
   height: 100%;
+
+  object-fit: cover;
+  object-position: 49% 27%;
 
   transition: filter 300ms ease;
   filter: grayscale(100%);
@@ -26,11 +23,5 @@ const Wrapper = styled.div`
     height: 40vh;
   }
 `;
-
-const Portrait = () => (
-  <Wrapper>
-    <PortraitImage />
-  </Wrapper>
-);
 
 export default Portrait;
