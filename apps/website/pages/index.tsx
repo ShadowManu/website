@@ -63,8 +63,11 @@ const Index = () => {
                 I enjoy building software in a pragmatic, engineered way, using
                 state-of-the-art technologies to do as little as possible for
                 the best automation available, managing technical debt
-                responsibly, even in the oldest of environments. Doing agile,
-                digital transformations and any other trendy buzzwords.
+                responsibly, even in the oldest of environments.
+              </Phrase>
+              <Phrase>
+                Doing agile, digital transformations and any other trendy
+                buzzwords.
               </Phrase>
               <Phrase>
                 Typescript. React. Node. Azure. Angular. Haskell. Biking. Video
