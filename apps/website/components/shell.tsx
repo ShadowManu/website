@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 
 import Background from './background';
+import Bar from './bar';
 
 const VALID_FORWARD = { shouldForwardProp: isPropValid };
 
@@ -49,10 +50,13 @@ const Shell: React.FC<React.PropsWithChildren<Props>> = ({
   children,
 }) => {
   return (
-    <MainContainer className={className} centered={centered}>
+    <>
       <Background />
-      <PageCard centered={centered}>{children}</PageCard>
-    </MainContainer>
+      <Bar />
+      <MainContainer className={className} centered={centered}>
+        <PageCard centered={centered}>{children}</PageCard>
+      </MainContainer>
+    </>
   );
 };
 
