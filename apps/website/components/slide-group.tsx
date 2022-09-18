@@ -4,14 +4,12 @@ import styled from '@emotion/styled';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-const DEFAULT_DURATION = 500;
+interface AppearProps {
+  duration: number;
+  delay: number;
+}
 
-const AppearAdapter: React.FC<{ className?: string; child: any }> = ({
-  className,
-  child,
-}) => React.cloneElement(child, { className });
-
-const Appear = styled(AppearAdapter)<{ duration: number; delay: number }>`
+const Appear = styled('div')<AppearProps>`
   &.slide-appear {
     opacity: 0;
     transform: translateX(30px);
@@ -29,7 +27,9 @@ interface Props {
   step?: number;
 }
 
-const SlideGroup: React.FC<Props> = ({
+const DEFAULT_DURATION = 500;
+
+const SlideGroup: React.FC<React.PropsWithChildren<Props>> = ({
   duration = DEFAULT_DURATION,
   step = duration / 2,
   children,
@@ -38,7 +38,9 @@ const SlideGroup: React.FC<Props> = ({
     <TransitionGroup appear component={null}>
       {React.Children.map(children, (child, i) => (
         <CSSTransition key={i} timeout={duration + step * i} classNames="slide">
-          <Appear child={child} duration={duration} delay={step * i} />
+          <Appear duration={duration} delay={step * i}>
+            {child}
+          </Appear>
         </CSSTransition>
       ))}
     </TransitionGroup>
