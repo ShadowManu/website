@@ -43,7 +43,11 @@ interface Props {
   className?: string;
 }
 
-const Shell: React.FC<Props> = ({ centered = false, className, children }) => {
+const Shell: React.FC<React.PropsWithChildren<Props>> = ({
+  centered = false,
+  className,
+  children,
+}) => {
   return (
     <MainContainer className={className} centered={centered}>
       <Background />
