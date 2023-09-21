@@ -26,14 +26,23 @@ const MainContainer = styled(Box, VALID_FORWARD)<{ centered?: boolean }>`
 
 export const PageCard = styled(Card, VALID_FORWARD)<{ centered?: boolean }>`
   margin: 0 auto;
-  margin-top: ${({ centered, theme }) => (centered ? 0 : theme.spacing(2))};
+  margin-top: ${({ centered, theme }) =>
+    centered ? 'calc(64px + 48px)' : theme.spacing(2)};
+  margin-bottom: 48px;
   max-width: calc(100vw - 96px);
+
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    margin-top: ${({ centered, theme }) =>
+      centered ? '48px' : theme.spacing(2)};
+  }
 
   ${({ theme }) => theme.breakpoints.down('sm')} {
     width: 100%;
     max-width: 100%;
     min-height: 100vh;
     margin-top: 0;
+    margin-bottom: 0;
+    overflow-y: auto;
 
     border-radius: 0;
   }

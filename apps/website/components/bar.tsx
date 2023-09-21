@@ -27,8 +27,8 @@ const StyledButton = styled(Button)`
 const routes = [
   { path: '/', name: 'Me' },
   { path: '/experience', name: 'Experience' },
-  { path: '/interests', name: 'Interests' },
-  { path: '/projects', name: 'projects' },
+  // { path: '/interests', name: 'Interests' },
+  // { path: '/projects', name: 'projects' },
 ];
 
 const Bar: React.FC = () => {
