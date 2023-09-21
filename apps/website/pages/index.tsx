@@ -8,6 +8,7 @@ import SEO from '../components/seo';
 
 import Shell from '../components/shell';
 import SlideGroup from '../components/slide-group';
+import { experienceTime } from '../core/time';
 
 import Networks from '../pages-utils/index/networks';
 import Portrait from '../pages-utils/index/portrait';
@@ -41,10 +42,10 @@ const Index = () => {
       <SEO />
 
       <StyledGrid container spacing={0}>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={4}>
           <Portrait />
         </Grid>
-        <Grid item xs={12} md={9}>
+        <Grid item xs={12} md={8}>
           <Content>
             <SlideGroup>
               <Typography variant="h5" component="h1">
@@ -57,21 +58,25 @@ const Index = () => {
               <Separator />
 
               <Phrase>
-                6 years of experience making software for the web.
+                {experienceTime()} years of experience making software for the
+                web, both in frontend and backend.
               </Phrase>
               <Phrase>
-                I enjoy building software in a pragmatic, engineered way, using
-                state-of-the-art technologies to do as little as possible for
-                the best automation available, managing technical debt
-                responsibly, even in the oldest of environments.
+                I enjoy building software in a pragmatic but methodical way,
+                using modern and stable technologies to get the job done with as
+                little code possible and the best automation available, managing
+                technical debt responsibly, even in the oldest of environments.
               </Phrase>
               <Phrase>
-                Doing agile, digital transformations and any other trendy
-                buzzwords.
+                I&apos;m currently highly interested in software at scale:
+                tooling for large codebases or large teams, monorepos,
+                mantainability through static analysis or code sharing,
+                Infrastructure as Code and other automations in general. Please
+                reach out if you have a role that fits!
               </Phrase>
               <Phrase>
-                Typescript. React. Node. Azure. Angular. Haskell. Biking. Video
-                Games.
+                Typescript. Node. React. AWS. Azure. Docker. Python. Angular.
+                Haskell. Biking. Video games.
               </Phrase>
 
               <Networks />
