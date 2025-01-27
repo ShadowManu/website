@@ -26,7 +26,7 @@ export const jobs: Job[] = [
     },
     intermediary: {
       name: 'ZipDev',
-      logo: 'https://zipdev.com/wp-content/uploads/2023/08/cropped-Untitled-design-15.png',
+      logo: 'https://res.cloudinary.com/dvnzesejj/image/upload/v1707323272/zipdev-logo_mh1rle.png',
       url: 'https://zipdev.com/',
     },
     location: 'Santiago (Remote, PST)',
